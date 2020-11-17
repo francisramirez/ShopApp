@@ -12,6 +12,7 @@ export class CustumerComponent implements OnInit {
 
   private custReponse:CustumerResponse;
   custumerList:CustumerModel[];
+  fields:string[]=['custId','companyname','contactname','contacttitle','phone','fax']
 
   constructor(private custService: CustomerService) { }
 
