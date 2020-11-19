@@ -2,3 +2,6 @@ table{
   width: 95%;
   margin: 25px;
 }
+th.mat-sort-header-sorted {
+  color: black;
+}

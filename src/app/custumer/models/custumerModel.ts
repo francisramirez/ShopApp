@@ -1,10 +1,11 @@
 export interface CustumerModel{
 
-  custId:number;
+  custumerId:number;
   companyname:string;
   contactname:string;
   contacttitle:string;
   address:string;
+  email:string;
   city:string;
   region:string;
   postalcode:string;

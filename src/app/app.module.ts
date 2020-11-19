@@ -12,7 +12,7 @@ import { SalesModule } from './sales/sales.module';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
