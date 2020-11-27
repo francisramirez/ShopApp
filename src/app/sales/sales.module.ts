@@ -5,11 +5,8 @@ import { MatTableModule } from "@angular/material/table";
 import { MatSortModule } from "@angular/material/sort";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatDialogModule } from "@angular/material/dialog";
-import { MatButtonModule } from "@angular/material/button";
-import { MatInputModule } from "@angular/material/input";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { CustomerDialogComponent } from "../custumer/custumerdialog.component";
-import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [CustumerComponent,CustomerDialogComponent],
@@ -19,10 +16,7 @@ import { FormsModule } from "@angular/forms";
     MatSortModule,
     MatPaginatorModule,
     MatDialogModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSnackBarModule,
-    FormsModule
+    MatSnackBarModule
   ]
 })
 export class SalesModule { }

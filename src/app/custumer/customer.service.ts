@@ -32,8 +32,8 @@ export class CustomerService  {
     let url = this.baseUrl;
     return this.httpClient.put<CustumerResponse>(url,custModel,httpOptions);
   }
-  removeCustumer(custModel:CustumerRemoveModel): Observable<CustumerResponse>{
-    let url = this.baseUrl + "/update";
-    return this.httpClient.put<CustumerResponse>(url,custModel,httpOptions);
+  removeCustumer(custId:number): Observable<CustumerResponse>{
+    let url = this.baseUrl;
+    return this.httpClient.delete<CustumerResponse>(`${url}/${custId}`)
   }
 }

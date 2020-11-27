@@ -4,9 +4,12 @@ import { CustumerModel } from './models/custumerModel';
 import { CustumerResponse } from './models/custumerResponse';
 import { CustomerDialogComponent  } from "./custumerdialog.component";
 import { MatDialog } from "@angular/material/dialog";
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatSort} from '@angular/material/sort';
+import { MatTableDataSource} from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { DeleteDialogComponent } from '../common/delete/deletedialog.component';
+import { CustumerRemoveModel } from './models/custumerRemoveModel';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-custumer',
@@ -21,7 +24,8 @@ export class CustumerComponent implements OnInit  {
   dataSource = null;
 
   constructor(private custService: CustomerService,
-              private custDialog: MatDialog) { }
+              private custDialog: MatDialog,
+              private snackBar: MatSnackBar ) { }
 
   @ViewChild(MatSort,{static:true}) sort: MatSort;
   @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
@@ -38,23 +42,46 @@ export class CustumerComponent implements OnInit  {
      });
   }
   openAdd(){
-    this.custDialog.open(CustomerDialogComponent);
-    this.custDialog.afterAllClosed.subscribe(result => {
+    const dialogRef  = this.custDialog.open(CustomerDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
        this.getCustumers();
     });
   }
   openEdit(custEditModel:CustumerModel){
 
-    this.custDialog.open(CustomerDialogComponent,{
+    const dialogRef = this.custDialog.open(CustomerDialogComponent,{
       data:custEditModel
     });
 
-    this.custDialog.afterAllClosed.subscribe(result => {
-       this.getCustumers();
-    });
+      dialogRef.afterClosed().subscribe(result =>
+      {
+        this.getCustumers();
+      });
   }
   onFilter(event:Event){
       const filter = (event.target as HTMLInputElement).value;
       this.dataSource.filter=filter.trim().toLocaleLowerCase();
+  }
+  delete(custDeleteModel:CustumerModel){
+
+    const dialogRef = this.custDialog.open(DeleteDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      if (result) {
+
+          this.custService.removeCustumer(custDeleteModel.custumerId).subscribe(resultDelete => {
+
+            if (resultDelete.success) {
+
+                 this.snackBar.open(resultDelete.message,'',{
+                    duration: 2000
+                 })
+                 this.getCustumers();
+            }
+          });
+       }
+    });
   }
 }
