@@ -1,22 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 
 @Component({
    templateUrl:'./login.component.html'
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
     email:string;
     password:string
-    constructor(private loginService: LoginService){
+    constructor(private loginService: LoginService, private router: Router){
 
     }
+  ngOnInit(): void {
+
+  }
   login(){
-         alert('Entre');
     this.loginService.login(this. email,this.password).subscribe(response => {
-         alert(response.message);
-         console.log(response);
+      if (response.success) {
+           this.router.navigate(['/']);
+          }
     })
   }
 

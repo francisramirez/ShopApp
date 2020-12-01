@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import {MatSidenavModule} from '@angular/material/sidenav'
-import{ HttpClientModule} from '@angular/common/http'
+import{ HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
@@ -21,6 +21,7 @@ import { LoginComponent } from './security/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { CustumerComponent } from './custumer/custumer.component';
 import { CustomerDialogComponent } from './custumer/custumerdialog.component';
+import { JwtInterceptor } from './security/jwt.interceptor';
 
 
 @NgModule({
@@ -51,7 +52,9 @@ import { CustomerDialogComponent } from './custumer/custumerdialog.component';
     MatFormFieldModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass:JwtInterceptor,multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
