@@ -1,55 +1,59 @@
 <h1 mat-dialog-title>Customer Info</h1>
 
 <div mat-dialog-content class="example-container">
+   <form [formGroup] ="custumerForm" (ngSubmit)="saveCustumer()">
     <mat-form-field>
-       <mat-label>Company Name</mat-label>
-     <input matInput type="text" id="tbxcompanyname" [(ngModel)]="companyname">
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Contact Name</mat-label>
-    <input matInput type="text" id="tbxcontactname" [(ngModel)]="contactname">
+      <mat-label>Company Name</mat-label>
+    <input matInput type="text" id="tbxcompanyname"  formControlName ='companyname'>
    </mat-form-field>
    <mat-form-field>
-    <mat-label>Contact Title</mat-label>
-  <input matInput type="text" id="tbxcontacttitle" [(ngModel)]="contacttitle">
- </mat-form-field><br>
- <mat-form-field>
-  <mat-label>Phone</mat-label>
-<input matInput type="tel" id="tbxphone" [(ngModel)]="phone">
+     <mat-label>Contact Name</mat-label>
+   <input matInput type="text" id="tbxcontactname" formControlName='contactname'>
+  </mat-form-field>
+  <mat-form-field>
+   <mat-label>Contact Title</mat-label>
+ <input matInput type="text" id="tbxcontacttitle" formControlName='contacttitle'>
+</mat-form-field><br>
+<mat-form-field>
+ <mat-label>Phone</mat-label>
+<input matInput type="tel" id="tbxphone" formControlName ='phone'>
 </mat-form-field>
 <mat-form-field>
-  <mat-label>Fax</mat-label>
-<input matInput type="tel" id="tbxfax" [(ngModel)]="fax">
+ <mat-label>Fax</mat-label>
+<input matInput type="tel" id="tbxfax" formControlName ='fax'>
 </mat-form-field>
 <mat-form-field>
-  <mat-label>Email</mat-label>
-<input matInput type="email" id="tbxemail" [(ngModel)]="email">
+ <mat-label>Email</mat-label>
+<input matInput type="email" id="tbxemail" formControlName='email'>
 </mat-form-field>
 <h2 mat-dialog-title>Address Info</h2>
 
 <mat-form-field>
-  <mat-label>Address</mat-label>
-<input matInput type="text" id="tbxaddress" [(ngModel)]="address">
+ <mat-label>Address</mat-label>
+<input matInput type="text" id="tbxaddress" formControlName='address'>
 </mat-form-field>
 <mat-form-field>
-  <mat-label>City</mat-label>
-<input matInput type="text" id="tbxcity" [(ngModel)]="city">
+ <mat-label>City</mat-label>
+<input matInput type="text" id="tbxcity" formControlName ='city'>
 </mat-form-field>
 <mat-form-field>
-  <mat-label>Region</mat-label>
-<input matInput type="text" id="tbxregion" [(ngModel)]="region">
+ <mat-label>Region</mat-label>
+<input matInput type="text" id="tbxregion" formControlName ='region'>
 </mat-form-field><br>
 <mat-form-field>
-  <mat-label>Postal Code</mat-label>
-<input matInput type="text" id="tbxpostalcode" [(ngModel)]="postalcode">
+ <mat-label>Postal Code</mat-label>
+<input matInput type="text" id="tbxpostalcode" formControlName='postalcode'>
 </mat-form-field>
 <mat-form-field>
-  <mat-label>Country</mat-label>
-<input matInput type="text" id="tbxcountry" [(ngModel)]="country">
+ <mat-label>Country</mat-label>
+<input matInput type="text" id="tbxcountry" formControlName ='country'>
 </mat-form-field>
-</div>
+
 <div mat-dialog-actions>
-  <button mat-raised-button color='primary' (click)="cust != null ? editCustumer() : saveCustumer()" > Save</button>
-  <button  mat-raised-button color='warn' (click)="closeDialog()">Cancel</button>
+  <button  type="submit" mat-raised-button color='primary'> Save</button>
+  <button type="button"  mat-raised-button color='warn' (click)="closeDialog()" >Cancel</button>
 
 </div>
+   </form>
+</div>
+

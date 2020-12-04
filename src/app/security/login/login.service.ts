@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Response } from 'src/app/models/response';
 import { UserAuth } from 'src/app/models/userAuth';
 import { map } from "rxjs/operators";
+import { Login } from '../models/login';
 
 const httpOptions ={
   headers: new HttpHeaders({
@@ -26,11 +27,8 @@ export class LoginService {
        const userAuth: UserAuth=  JSON.parse(localStorage.getItem('user'));
        this.userSubjet= new BehaviorSubject<UserAuth>(userAuth);
   }
-  login(email:string, password:string): Observable<Response>{
-       const loginModel={
-         email:email,
-         password:password
-       }
+  login(loginModel:Login): Observable<Response>{
+
       return this.httpClient.post<Response>(this.urlService,loginModel,httpOptions).pipe(
         map(result => {
 

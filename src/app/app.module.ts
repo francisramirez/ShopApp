@@ -18,7 +18,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { DeleteDialogComponent } from "./common/delete/deletedialog.component";
 import { LoginComponent } from './security/login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustumerComponent } from './custumer/custumer.component';
 import { CustomerDialogComponent } from './custumer/custumerdialog.component';
 import { JwtInterceptor } from './security/jwt.interceptor';
@@ -50,7 +50,8 @@ import { JwtInterceptor } from './security/jwt.interceptor';
     MatDialogModule,
     MatSnackBarModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass:JwtInterceptor,multi:true}
